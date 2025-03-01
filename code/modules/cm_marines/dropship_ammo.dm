@@ -330,10 +330,10 @@
 	icon_state = "custom_missile"
 	ammo_name = "rocket"
 	travelling_time = 80
-	point_cost = 700
+	point_cost = 600
 	fire_mission_delay = 0 //direct bombard only
 	/// the limits of the custom missile
-	var/list/reaction_limits = list( "max_ex_power" = 440, "base_ex_falloff" = 190, "max_ex_shards" = 128,
+	var/list/reaction_limits = list( "max_ex_power" = 480, "base_ex_falloff" = 180, "max_ex_shards" = 200,
 							"max_fire_rad" = 8, "max_fire_int" = 60, "max_fire_dur" = 48,
 							"min_fire_rad" = 3, "min_fire_int" = 5, "min_fire_dur" = 5
 	)
@@ -350,35 +350,35 @@
 /obj/structure/ship_ammo/rocket/custom_missile/attackby(obj/item/item as obj, mob/user as mob)
 	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 		if(assembly_stage == ASSEMBLY_UNLOCKED)
-			to_chat(user, SPAN_NOTICE("You lock the [name]."))
+			to_chat(user, SPAN_NOTICE("Ты заблокировал [name]."))
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
 			assembly_stage = ASSEMBLY_LOCKED
 			icon_state = "custom_missile_ready"
 		else if(assembly_stage == ASSEMBLY_LOCKED)
-			to_chat(user, SPAN_NOTICE("You unlock the [name]."))
+			to_chat(user, SPAN_NOTICE("Ты разблокировал [name]."))
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
 			assembly_stage = ASSEMBLY_UNLOCKED
 			icon_state = "custom_missile"
 	else if(is_type_in_list(item, allowed_containers) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
 		if(current_container_volume >= max_container_volume)
-			to_chat(user, SPAN_DANGER("The [name] can not hold more containers."))
+			to_chat(user, SPAN_DANGER("В [name] нет места. "))
 		else
 			if(item.reagents.total_volume)
 				if(item.reagents.maximum_volume + current_container_volume > max_container_volume)
-					to_chat(user, SPAN_DANGER("\the [item] is too large for [name]."))
+					to_chat(user, SPAN_DANGER(" item] слишком большой для [name]."))
 					return
 				if(user.temp_drop_inv_item(item))
-					to_chat(user, SPAN_NOTICE("You add \the [item] to the [name]."))
+					to_chat(user, SPAN_NOTICE("Ты добавил [item] в [name]."))
 					item.forceMove(src)
 					containers += item
 					current_container_volume += item.reagents.maximum_volume
 					assembly_stage = ASSEMBLY_UNLOCKED
 			else
-				to_chat(user, SPAN_DANGER("\the [item] is empty."))
+				to_chat(user, SPAN_DANGER(" [item] пуст."))
 	else if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 		if(assembly_stage == ASSEMBLY_UNLOCKED)
 			if(!length(containers))
-				to_chat(user, SPAN_DANGER("\the [name] has no containers."))
+				to_chat(user, SPAN_DANGER("В [name] нет контейнеров."))
 				return
 			for(var/obj/container in containers)
 				containers -= container
@@ -388,12 +388,12 @@
 
 /obj/structure/ship_ammo/rocket/custom_missile/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("Contains [containers.len] container\s.")
+	. += SPAN_NOTICE("Содержит [containers.len] контейнер/ов")
 	switch(assembly_stage)
 		if(ASSEMBLY_LOCKED)
-			. += SPAN_NOTICE("It is ready.")
+			. += SPAN_NOTICE("Ракета заблокирована.")
 		if(ASSEMBLY_UNLOCKED)
-			. += SPAN_NOTICE("It is unlocked.")
+			. += SPAN_NOTICE("Ракета разблокирована.")
 
 /obj/structure/ship_ammo/rocket/custom_missile/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	if(assembly_stage == ASSEMBLY_UNLOCKED || containers.len == 0) //shitty explosion if left unlocked or no containers
