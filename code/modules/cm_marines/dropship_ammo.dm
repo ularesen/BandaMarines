@@ -365,7 +365,7 @@
 		else
 			if(item.reagents.total_volume)
 				if(item.reagents.maximum_volume + current_container_volume > max_container_volume)
-					to_chat(user, SPAN_DANGER(" item] слишком большой для [name]."))
+					to_chat(user, SPAN_DANGER(" [item] слишком большой для [name]."))
 					return
 				if(user.temp_drop_inv_item(item))
 					to_chat(user, SPAN_NOTICE("Ты добавил [item] в [name]."))
@@ -388,7 +388,7 @@
 
 /obj/structure/ship_ammo/rocket/custom_missile/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("Содержит [containers.len] контейнер/ов")
+	. += SPAN_NOTICE("Содержит [containers.len] контейнер/а")
 	switch(assembly_stage)
 		if(ASSEMBLY_LOCKED)
 			. += SPAN_NOTICE("Ракета заблокирована.")
