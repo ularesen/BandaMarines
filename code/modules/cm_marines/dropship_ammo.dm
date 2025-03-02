@@ -330,6 +330,7 @@
 	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi'
 	icon_state = "custom_missile"
 	ammo_name = "rocket"
+	ammo_id = "s"
 	travelling_time = 80
 	point_cost = 600
 	fire_mission_delay = 0 //direct bombard only
