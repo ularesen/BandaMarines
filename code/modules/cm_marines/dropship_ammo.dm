@@ -331,18 +331,18 @@
 	icon_state = "custom_missile"
 	ammo_name = "rocket"
 	ammo_id = "s"
-	travelling_time = 80
+	travelling_time = 100
 	point_cost = 600
 	fire_mission_delay = 0 //direct bombard only
 	/// the limits of the custom missile
-	var/list/reaction_limits = list( "max_ex_power" = 480, "base_ex_falloff" = 180, "max_ex_shards" = 200,
+	var/list/reaction_limits = list( "max_ex_power" = 300, "base_ex_falloff" = 140, "max_ex_shards" = 200,
 							"max_fire_rad" = 8, "max_fire_int" = 60, "max_fire_dur" = 48,
 							"min_fire_rad" = 3, "min_fire_int" = 5, "min_fire_dur" = 5
 	)
 	/// current assembly state of the missile
 	var/assembly_stage = ASSEMBLY_UNLOCKED
 	/// the maximum volume allowed in the rocket
-	var/max_container_volume = 360
+	var/max_container_volume = 240
 	/// the current total volume
 	var/current_container_volume = 0
 	/// the containers inside the rocket
@@ -390,7 +390,7 @@
 
 /obj/structure/ship_ammo/rocket/custom_missile/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("Содержит [containers.len] контейнер/а")
+	. += SPAN_NOTICE("Содержит [containers.len] контейнер")
 	switch(assembly_stage)
 		if(ASSEMBLY_LOCKED)
 			. += SPAN_NOTICE("Ракета заблокирована.")
