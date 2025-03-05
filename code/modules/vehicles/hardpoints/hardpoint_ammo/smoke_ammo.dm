@@ -1,12 +1,12 @@
 /obj/item/ammo_magazine/hardpoint/turret_smoke
-	name = "Turret Smoke Screen Magazine"
-	desc = "A smoke grenades magazine used by tank turret."
-	caliber = "grenade"
+	name = "ракетострел"
+	desc = "ебет"
+	caliber = "rocket"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/vehicles.dmi'
 	icon_state = "slauncher_1"
 	w_class = SIZE_LARGE
-	default_ammo = /datum/ammo/grenade_container/smoke
-	max_rounds = 10
+	default_ammo = /datum/ammo/rocket/ap/tank_towlauncher
+	max_rounds = 40
 	gun_type = /obj/item/hardpoint/holder/tank_turret
 
 /obj/item/ammo_magazine/hardpoint/turret_smoke/update_icon()
