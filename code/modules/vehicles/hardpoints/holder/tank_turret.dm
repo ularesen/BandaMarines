@@ -63,9 +63,9 @@
 	gun_firemode_list = list(
 		GUN_FIREMODE_BURSTFIRE,
 	)
-	burst_amount = 2
-	burst_delay = 1.0 SECONDS
-	extra_delay = 13.0 SECONDS
+	burst_amount = 10
+	burst_delay = 0.5 SECONDS
+	extra_delay = 5.0 SECONDS
 
 /obj/item/hardpoint/holder/tank_turret/update_icon()
 	var/broken = (health <= 0)
