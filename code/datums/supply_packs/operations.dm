@@ -101,7 +101,7 @@
 	group = "Operations"
 
 /datum/supply_packs/otcasrockets
-	name = "Экспериментальная ракета SV-1-N"
+	name = "Экспериментальная ракета SV1N"
 	cost = 0
 	containertype = /obj/structure/ship_ammo/rocket/custom_missile
 	buyable = 0
