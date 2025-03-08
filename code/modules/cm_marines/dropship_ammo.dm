@@ -330,9 +330,9 @@
 	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi'
 	icon_state = "custom_missile"
 	ammo_name = "rocket"
-	ammo_id = "s"
+	ammo_id = "cc"
 	travelling_time = 100
-	point_cost = 600
+	point_cost = 0
 	fire_mission_delay = 0 //direct bombard only
 	/// the limits of the custom missile
 	var/list/reaction_limits = list( "max_ex_power" = 300, "base_ex_falloff" = 140, "max_ex_shards" = 200,
