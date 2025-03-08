@@ -327,7 +327,6 @@
 /obj/structure/ship_ammo/rocket/custom_missile
 	name = "\improper Экспериментальная ракета 'SV-1-N"
 	desc = "Экспериментальная ракета, созданная для того чтобы доставлять большое количество созданных в Оружейной Мастерской веществ."
-	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi'
 	icon_state = "custom_missile"
 	ammo_name = "rocket"
 	ammo_id = "cc"
